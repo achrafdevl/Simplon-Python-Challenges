@@ -1,4 +1,4 @@
-etudiant_info = ("Yasmine", 22, "Informatique", 17.4)
+etudiant_info = ("Achraf", 24, "Informatique", 18.4)
 
 print("Prénom :", etudiant_info[0])
 print("Âge :", etudiant_info[1])
@@ -9,7 +9,7 @@ try:
     etudiant_info[2] = "Mathématiques"
 except TypeError as e:
     print("\nErreur :", e)
-    print("Explication : Les tuples sont **immutables**, ce qui veut dire qu'on ne peut pas changer leurs valeurs après leur création.")
+    print("On ne peut pas modifier leurs valeurs après leur création.")
 
 print("\nAffichage avec slicing (prénom et âge) :", etudiant_info[0:2])
 

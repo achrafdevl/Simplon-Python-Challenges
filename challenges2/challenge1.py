@@ -10,11 +10,11 @@ class CompteBancaire:
         if montant <= self.solde:
             self.solde -= montant
         else:
-            print("Fonds insuffisants.")
+            print("Solde insuffisants.")
 
     def afficher_solde(self):
         print("Nom :", self.nom)
-        print("Solde :", self.solde, "€")
+        print("Solde :", self.solde, "MAD")
 
 
 # Exemple
