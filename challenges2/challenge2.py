@@ -1,4 +1,3 @@
-# Classe de base
 class Personne:
     def __init__(self, nom, prenom, age):
         self.nom = nom
@@ -10,7 +9,6 @@ class Personne:
         print("Prénom :", self.prenom)
         print("Âge :", self.age)
 
-# Étudiant hérite de Personne
 class Etudiant(Personne):
     def __init__(self, nom, prenom, age, matricule):
         super().__init__(nom, prenom, age)
@@ -30,7 +28,6 @@ class Etudiant(Personne):
         print("Matricule :", self.matricule)
         print("Moyenne :", self.moyenne())
 
-# Enseignant hérite de Personne
 class Enseignant(Personne):
     def __init__(self, nom, prenom, age, specialite, salaire):
         super().__init__(nom, prenom, age)
@@ -42,7 +39,6 @@ class Enseignant(Personne):
         print("c :", self.specialite)
         print("Salaire :", self.salaire)
 
-# Classe École
 class Ecole:
     def __init__(self, nom):
         self.nom = nom
@@ -66,11 +62,10 @@ class Ecole:
             ens.afficher_infos()
             
 
-# Exemple
 e1 = Etudiant("Chair", "Achraf", 24, "123")
 e1.ajouter_note(18)
 
-ens1 = Enseignant("hamid", "hamif", 35, "data analysis", 4000)
+ens1 = Enseignant("hamid", "hamid", 35, "data analysis", 4000)
 
 ecole = Ecole("Simplon academy")
 ecole.ajouter_etudiant(e1)
