@@ -1,0 +1,4 @@
+nom_projet: "Gestion de Fichiers"
+auteur: "wolf"
+version: 1.0
+chemin_donnees: "./donnees"

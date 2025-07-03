@@ -39,7 +39,7 @@ class Enseignant(Personne):
 
     def afficher_infos(self):
         super().afficher_infos()
-        print("Spécialité :", self.specialite)
+        print("c :", self.specialite)
         print("Salaire :", self.salaire)
 
 # Classe École
