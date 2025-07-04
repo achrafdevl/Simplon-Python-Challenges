@@ -15,9 +15,9 @@ class CompteBancaire:
     def afficher_solde(self):
         print("Nom :", self.nom)
         print("Solde :", self.solde, "MAD")
+      
 
 
-# Exemple
 compte1 = CompteBancaire("Yasmine")
 compte1.deposer(100)
 compte1.retirer(30)
