@@ -58,16 +58,16 @@ print(add)
 
 # ! challenge 4
 
-read.loc[4,"age"] = np.nan
+# read.loc[4,"age"] = np.nan
 
-ds = read.head()
-print(ds)
+# ds = read.head()
+# print(ds)
 
-print("********************")
+# print("********************")
 
 
-null = read.isnull()
-print(null)
+# null = read.isnull()
+# print(null)
 
 
 print("********************")
@@ -81,17 +81,17 @@ print("********************")
 
 # ! challenge 5
 
-decroissant = read.sort_values(by='age', ascending=False)
-print(decroissant)
+# decroissant = read.sort_values(by='age', ascending=False)
+# print(decroissant)
 
 
-print("********************")
+# print("********************")
 
-drop = read.drop("Année de Naissance", axis=1)
-print(drop)
+# drop = read.drop("Année de Naissance", axis=1)
+# print(drop)
 
-print("********************")
+# print("********************")
 
 
-dropLinge = read.drop(index=0)
-print(dropLinge)
+# dropLinge = read.drop(index=0)
+# print(dropLinge)
