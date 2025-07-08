@@ -59,7 +59,6 @@
 -- (4, 2, 1),
 -- (5, 4, 1);
 
-
 -- SELECT * FROM Customers;
 
 -- SELECT * FROM orders WHERE order_date > '2024-01-01';
@@ -90,6 +89,8 @@
 -- DELETE FROM customers WHERE customer_id = 1;
 -- DELETE FROM orders  WHERE customer_id = 1;
 
+-- DELETE FROM orders  WHERE customer_id = 2;
+
 -- ********************* challenge 2 ****************
 -- SELECT
 --   o.order_id,
@@ -110,24 +111,118 @@
 -- LEFT JOIN orders o ON o.customer_id = c.customer_id
 -- WHERE o.order_id IS NULL
 
-SELECT 
-  clients.id,
-  clients.nom,
-  COUNT(commandes.id) AS nombre_commandes
-FROM clients
-LEFT JOIN commandes ON commandes.client_id = clients.id
-GROUP BY clients.id, clients.nom
-ORDER BY nombre_commandes DESC;
+-- SELECT 
+--   c.customer_id,
+--   c.first_name,
+--   COUNT(c.customer_id) AS nombre_commandes
+-- FROM customers c
+-- LEFT JOIN orders o ON o.customer_id = c.customer_id
+-- GROUP BY c.customer_id, c.first_name
+-- ORDER BY nombre_commandes DESC;
 
-SELECT 
-  clients.id,
-  clients.nom,
-  COUNT(commandes.id) AS nombre_commandes
-FROM clients
-LEFT JOIN commandes ON commandes.client_id = clients.id
-GROUP BY clients.id, clients.nom
-ORDER BY nombre_commandes DESC;
+-- SELECT SUM(total_amount) AS total_orders 
+-- FROM orders;
+
+-- SELECT COUNT(*) AS nombre_clients
+-- FROM customers;
+
+-- select avg(total_amount) from orders
+
+-- SELECT 
+--   c.customer_id,
+--   c.first_name,
+--   c.last_name,
+--   SUM(o.total_amount) AS total_orders
+-- FROM customers c
+-- JOIN orders o ON c.customer_id = o.customer_id
+-- GROUP BY c.customer_id, c.first_name, c.last_name
+-- ORDER BY total_orders DESC;
+
+-- SELECT 
+--   TO_CHAR(order_date, 'MM') AS mois,
+--   COUNT(*) AS nombre_commandes
+-- FROM orders
+-- GROUP BY mois
+-- ORDER BY mois;
+
+
+-- SELECT 
+--   TO_CHAR(order_date, 'MM') AS mois,
+--   AVG(total_amount) AS montant_moyen
+-- FROM orders
+-- GROUP BY mois
+-- ORDER BY mois;
+
+-- SELECT 
+--   c.customer_id,
+--   c.first_name,
+--   c.last_name,
+--   SUM(o.total_amount) AS total_commandes
+-- FROM customers c
+-- JOIN orders o ON c.customer_id = o.customer_id
+-- GROUP BY c.customer_id, c.first_name, c.last_name
+-- HAVING SUM(o.total_amount) > 100
+-- ORDER BY total_commandes DESC;
+
+-- ***********************
+
+
+-- SELECT DISTINCT c.*
+-- FROM customers c
+-- WHERE c.customer_id IN (
+--   SELECT customer_id
+--   FROM orders
+--   WHERE total_amount > 200
+-- );
+
+
+-- SELECT c.customer_id, c.first_name, c.last_name, total
+-- FROM customers c
+-- JOIN (
+--   SELECT customer_id, SUM(total_amount) AS total
+--   FROM orders
+--   GROUP BY customer_id
+--   ORDER BY total DESC
+--   LIMIT 1
+-- ) AS sub ON c.customer_id = sub.customer_id;
+
+
+-- SELECT *
+-- FROM orders
+-- WHERE total_amount > (
+--   SELECT AVG(total_amount) FROM orders
+-- );
+
+
+-- CREATE OR REPLACE VIEW customer_orders_view AS
+-- SELECT 
+--   c.customer_id,
+--   c.first_name,
+--   c.last_name,
+--   o.order_id,
+--   o.order_date,
+--   o.total_amount
+-- FROM customers c
+-- JOIN orders o ON c.customer_id = o.customer_id;
+
+
+-- SELECT 
+--   customer_id,
+--   first_name,
+--   last_name,
+--   SUM(total_amount) AS total_commandes
+-- FROM customer_orders_view
+-- GROUP BY customer_id, first_name, last_name
+-- HAVING SUM(total_amount) > 1000
+-- ORDER BY total_commandes DESC;
 
 
 
+-- CREATE OR REPLACE VIEW monthly_sales_view AS
+-- SELECT 
+--   TO_CHAR(order_date, 'MM') AS mois,
+--   SUM(total_amount) AS total_ventes
+-- FROM orders
+-- GROUP BY mois
+-- ORDER BY mois;
 
