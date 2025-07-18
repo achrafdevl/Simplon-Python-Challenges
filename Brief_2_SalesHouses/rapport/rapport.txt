@@ -1,0 +1,85 @@
+📝 Rapport d'Analyse Prédictive - Prix de Vente des Maisons
+📌 1. Méthodologie
+L’objectif est de prédire les prix de vente de maisons à partir de caractéristiques disponibles dans un jeu de données. La méthodologie appliquée suit les étapes classiques de la science des données :
+
+Chargement et compréhension des données
+
+Analyse exploratoire des variables
+
+Prétraitement (nettoyage, encodage, normalisation)
+
+Séparation des données en jeu d'entraînement/test
+
+Entraînement de plusieurs modèles de régression
+
+Évaluation à l'aide de métriques pertinentes
+
+Comparaison des modèles et choix du meilleur
+
+📊 2. Analyse exploratoire des données (EDA)
+Distribution de la variable cible : SalePrice est asymétrique, nécessitant parfois une transformation logarithmique.
+
+Corrélation :
+
+Variables fortement corrélées au prix :
+
+OverallQual (qualité générale)
+
+GrLivArea (surface habitable)
+
+GarageCars, TotalBsmtSF, 1stFlrSF
+
+Outliers :
+
+Certaines maisons présentent des valeurs très élevées sur GrLivArea mais un prix relativement bas. Ces valeurs ont été examinées voire supprimées.
+
+Des visualisations comme des heatmaps de corrélation, scatter plots et box plots ont été utilisées pour mieux comprendre les relations.
+
+🧹 3. Prétraitement des données
+Le pipeline de prétraitement a inclus :
+
+Gestion des valeurs manquantes par imputation ou suppression
+
+Encodage des variables catégorielles via One-Hot Encoding
+
+Normalisation des variables numériques pour les modèles sensibles à l’échelle (ex. SVR)
+
+Séparation en X (features) et y (target)
+
+Split en jeu d'entraînement (80%) et test (20%)
+
+Validation croisée (5 folds) pour évaluer la stabilité des modèles
+
+🤖 4. Modèles testés
+Les modèles de régression suivants ont été entraînés :
+
+Modèle	Description
+Linear Regression	Modèle de base, utile pour une première estimation
+Random Forest Regressor	Modèle d’ensemble basé sur des arbres aléatoires
+Support Vector Regressor (SVR)	Représentation avec marges optimales, sensible à l’échelle
+Gradient Boosting Regressor	Arbres séquentiels optimisant les résidus
+
+📈 5. Résultats des modèles
+Modèle	R² (CV)	R² (Test)	RMSE	MAE
+Linear Regression	0.889 ± 0.021	0.848	0.408	0.213
+Random Forest	0.992 ± 0.002	0.996	0.070	0.036
+SVR	0.984 ± 0.005	0.985	0.129	0.074
+Gradient Boosting	0.994 ± 0.001	0.996	0.065	0.044
+
+Remarques :
+
+Random Forest et Gradient Boosting offrent des résultats remarquables, avec un R² proche de 1 et des erreurs très faibles.
+
+SVR est performant mais légèrement inférieur aux modèles d’ensemble.
+
+Régression linéaire est nettement en retrait en précision.
+
+✅ 6. Conclusion
+Le Gradient Boosting Regressor s’impose comme le meilleur modèle, combinant précision et stabilité.
+
+Les variables les plus importantes identifiées sont : OverallQual, GrLivArea, TotalBsmtSF, GarageCars.
+
+La validation croisée a confirmé la robustesse des modèles.
+
+Le pipeline peut être facilement déployé dans une application de prédiction immobilière.
+
